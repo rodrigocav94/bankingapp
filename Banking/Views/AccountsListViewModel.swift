@@ -15,6 +15,7 @@ class AccountsListViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var didFailLoading: Bool = false
     @Published var displayingErrorAlert: Bool = false
+    @Published var path = NavigationPath()
 
     private let apiService = APIService()
 
@@ -29,5 +30,12 @@ class AccountsListViewModel: ObservableObject {
             displayingErrorAlert = true
         }
         isLoading = false
+    }
+    
+    func didTap(account: Account) {
+        if didFailLoading || isLoading {
+            return
+        }
+        path.append(account)
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Account: Identifiable, Codable {
+struct Account: Identifiable, Codable, Hashable {
     let id: String
     let accountNumber: Int
     let balance, currencyCode: String

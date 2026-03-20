@@ -13,13 +13,9 @@ struct AccountsListView: View {
     fileprivate var usingPlaceholder: Bool = false
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $viewModel.path) {
             List((viewModel.isLoading || usingPlaceholder) ? viewModel.placeholderAccounts : viewModel.accounts) { account in
-                AccountRowSection(
-                    account: account,
-                    isFavorite: favoriteManager.isFavorited(id: account.id)
-                )
-                .redacted(reason: viewModel.isLoading ? .placeholder : [])
+                accountRow(for: account)
             }
             .listSectionSpacing(16)
             .refreshable {
@@ -39,12 +35,30 @@ struct AccountsListView: View {
             } message: {
                 Text("We're experiencing persistent connection issues. Please try again in a few minutes.")
             }
+            .navigationDestination(for: Account.self) { account in
+                EmptyView()
+            }
         }
         .task {
             if !usingPlaceholder {
                 await viewModel.loadAccounts()
             }
         }
+    }
+    
+    func accountRow(for account: Account) -> some View {
+        AccountRowSection(
+            account: account,
+            isFavorite: favoriteManager.isFavorited(id: account.id)
+        )
+        .redacted(reason: viewModel.isLoading ? .placeholder : [])
+        .onTapGesture {
+            viewModel.didTap(account: account)
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(.isButton)
+        .accessibilityHint("Goes to \(account.displayName) details")
+        .accessibilityLabel("Account: \(account.displayName)")
     }
 }
 
