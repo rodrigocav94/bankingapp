@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AccountsListView: View {
+    @Namespace private var namespace
     @StateObject private var viewModel = AccountsListViewModel()
     @StateObject private var favoriteManager = FavoriteManager.shared
     fileprivate var usingPlaceholder: Bool = false
@@ -40,6 +41,12 @@ struct AccountsListView: View {
             }
             .navigationDestination(for: Account.self) { account in
                 AccountDetailView(account: account)
+                    .navigationTransition(
+                        .zoom(
+                            sourceID: account.id,
+                            in: namespace
+                        )
+                    )
             }
         }
         .task {
@@ -62,6 +69,7 @@ struct AccountsListView: View {
         .accessibilityAddTraits(.isButton)
         .accessibilityHint("Goes to \(account.displayName) details")
         .accessibilityLabel("Account: \(account.displayName)")
+        .matchedTransitionSource(id: account.id, in: namespace)
     }
 }
 
