@@ -1,0 +1,54 @@
+# macOS
+.DS_Store
+
+# Xcode
+## Build generated
+build/
+DerivedData/
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+# Uncomment the line below if you don't want to check in the Package.resolved file
+# (Usually, you DO want to check this in to lock your dependency versions)
+# Package.resolved
+
+# CocoaPods
+# By default, CocoaPods dependencies are NOT ignored. 
+# Uncomment the line below if you prefer not to track the Pods directory.
+# Pods/
+
+# Carthage
+Carthage/Build/
+# Uncomment the line below if you want to avoid checking in Carthage dependencies.
+# Carthage/Checkouts/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Code Injection
+iOSInjectionProject/
