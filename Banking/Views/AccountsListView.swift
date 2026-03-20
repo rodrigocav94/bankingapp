@@ -10,10 +10,11 @@ import SwiftUI
 struct AccountsListView: View {
     @StateObject private var viewModel = AccountsListViewModel()
     @StateObject private var favoriteManager = FavoriteManager.shared
+    fileprivate var usingPlaceholder: Bool = false
     
     var body: some View {
         NavigationStack {
-            List(viewModel.isLoading ? viewModel.placeholderAccounts : viewModel.accounts) { account in
+            List((viewModel.isLoading || usingPlaceholder) ? viewModel.placeholderAccounts : viewModel.accounts) { account in
                 AccountRowSection(
                     account: account,
                     isFavorite: favoriteManager.isFavorited(id: account.id)
@@ -31,7 +32,7 @@ struct AccountsListView: View {
                     }
                 }
             }
-            .navigationTitle("Accounts")
+            .navigationTitle("Select Account")
             .toolbar(viewModel.didFailLoading ? .hidden : .visible)
             .alert("Service Unreachable", isPresented: $viewModel.displayingErrorAlert) {
                 Button("OK", role: .cancel) {}
@@ -40,7 +41,13 @@ struct AccountsListView: View {
             }
         }
         .task {
-            await viewModel.loadAccounts()
+            if !usingPlaceholder {
+                await viewModel.loadAccounts()
+            }
         }
     }
+}
+
+#Preview {
+    AccountsListView(usingPlaceholder: true)
 }

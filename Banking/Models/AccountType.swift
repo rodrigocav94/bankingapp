@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum AccountType: String, Codable {
+enum AccountType: String, Codable, CaseIterable {
     case current, savings, time
     case creditCard = "credit card"
     

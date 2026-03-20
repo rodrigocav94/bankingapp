@@ -17,7 +17,7 @@ struct Account: Identifiable, Codable {
 
 extension Account {
     var displayName: String { accountNickname ?? String(accountNumber) }
-    static func example(type: AccountType = .current) -> Account {
+    static func example(type: AccountType = AccountType.allCases.randomElement()!) -> Account {
         Account(
             id: UUID().uuidString,
             accountNumber: 12345,
