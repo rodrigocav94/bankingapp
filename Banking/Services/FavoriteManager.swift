@@ -36,4 +36,8 @@ class FavoriteManager: ObservableObject {
             favoriteAccountIds = Set(array)
         }
     }
+    
+    func isFavorited(id: String) -> Bool {
+        favoriteAccountIds.contains(id)
+    }
 }
