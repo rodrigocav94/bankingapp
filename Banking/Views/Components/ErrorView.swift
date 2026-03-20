@@ -10,14 +10,14 @@ import SwiftUI
 struct ErrorView: View {
     var onRetry: () -> Void
     var body: some View {
-        VStack(spacing: 30) {
+        VStack(spacing: 32) {
             Image(.alert)
                 .accentArtstyle()
-            VStack {
+            VStack(spacing: 16) {
                 Text("Houston, we have a problem!")
-                    .font(.headline)
+                    .font(.largeTitle.bold())
                 Text("The connection fizzled out before we could load this page.")
-                    .font(.subheadline)
+                    .font(.title2)
                     .foregroundStyle(.secondary)
             }
             Button("Try Again") {

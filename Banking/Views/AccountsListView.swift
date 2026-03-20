@@ -13,26 +13,31 @@ struct AccountsListView: View {
     
     var body: some View {
         NavigationStack {
-            Group {
+            List(viewModel.isLoading ? viewModel.placeholderAccounts : viewModel.accounts) { account in
+                AccountRowSection(
+                    account: account,
+                    isFavorite: favoriteManager.isFavorited(id: account.id)
+                )
+                .redacted(reason: viewModel.isLoading ? .placeholder : [])
+            }
+            .listSectionSpacing(16)
+            .refreshable {
+                await viewModel.loadAccounts()
+            }
+            .overlay {
                 if viewModel.didFailLoading {
                     ErrorView {
                         Task { await viewModel.loadAccounts() }
                     }
-                } else {
-                    List(viewModel.isLoading ? viewModel.placeholderAccounts : viewModel.accounts) { account in
-                        AccountRowSection(
-                            account: account,
-                            isFavorite: favoriteManager.isFavorited(id: account.id)
-                        )
-                        .redacted(reason: viewModel.isLoading ? .placeholder : [])
-                    }
-                    .listSectionSpacing(16)
-                    .refreshable {
-                        await viewModel.loadAccounts()
-                    }
                 }
             }
             .navigationTitle("Accounts")
+            .toolbar(viewModel.didFailLoading ? .hidden : .visible)
+            .alert("Service Unreachable", isPresented: $viewModel.displayingErrorAlert) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text("We're experiencing persistent connection issues. Please try again in a few minutes.")
+            }
         }
         .task {
             await viewModel.loadAccounts()

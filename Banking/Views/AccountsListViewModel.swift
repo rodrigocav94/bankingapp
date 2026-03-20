@@ -14,6 +14,7 @@ class AccountsListViewModel: ObservableObject {
     @Published var accounts: [Account] = []
     @Published var isLoading = false
     @Published var didFailLoading: Bool = false
+    @Published var displayingErrorAlert: Bool = false
 
     private let apiService = APIService()
 
@@ -25,6 +26,7 @@ class AccountsListViewModel: ObservableObject {
         } catch {
             print(error.localizedDescription)
             didFailLoading = true
+            displayingErrorAlert = true
         }
         isLoading = false
     }
