@@ -23,7 +23,10 @@ struct AccountsListView: View {
             }
             .overlay {
                 if viewModel.didFailLoading {
-                    ErrorView {
+                    ErrorView(
+                        title: "Houston, we have a problem!",
+                        description: "The connection fizzled out before we could load this page."
+                    ) {
                         Task { await viewModel.loadAccounts() }
                     }
                 }
@@ -36,7 +39,7 @@ struct AccountsListView: View {
                 Text("We're experiencing persistent connection issues. Please try again in a few minutes.")
             }
             .navigationDestination(for: Account.self) { account in
-                EmptyView()
+                AccountDetailView(account: account)
             }
         }
         .task {
