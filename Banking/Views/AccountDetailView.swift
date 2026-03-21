@@ -39,7 +39,7 @@ struct AccountDetailView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Button {
                             Task {
-                                await viewModel.loadDetail()
+                                await viewModel.loadDetail(displayingAlertWhentFails: true)
                             }
                         } label: {
                             Text("Retry")
@@ -47,35 +47,35 @@ struct AccountDetailView: View {
                         }
                     }
                 }) {
-                LabeledContent("Type", value: String(localized: account.accountType.title))
-                LabeledContent("Balance", value: account.balance.asLocalizedCurrency(code: account.currencyCode))
-                if let detail = viewModel.detail {
-                    if let product = detail.productName {
-                        LabeledContent("Product", value: product)
+                    LabeledContent("Type", value: String(localized: account.accountType.title))
+                    LabeledContent("Balance", value: account.balance.asLocalizedCurrency(code: account.currencyCode))
+                    if let detail = viewModel.detail {
+                        if let product = detail.productName {
+                            LabeledContent("Product", value: product)
+                        }
+                        if let opened = detail.openedDate {
+                            LabeledContent("Opened", value: opened.formatted())
+                        }
+                        if let branch = detail.branch {
+                            LabeledContent("Branch", value: branch)
+                        }
+                        if let beneficiaries = detail.beneficiaries, !beneficiaries.isEmpty {
+                            LabeledContent("Beneficiaries", value: beneficiaries.joined(separator: ", "))
+                        }
+                    } else if viewModel.isLoadingDetail {
+                        progressView
                     }
-                    if let opened = detail.openedDate {
-                        LabeledContent("Opened", value: opened.formatted())
-                    }
-                    if let branch = detail.branch {
-                        LabeledContent("Branch", value: branch)
-                    }
-                    if let beneficiaries = detail.beneficiaries, !beneficiaries.isEmpty {
-                        LabeledContent("Beneficiaries", value: beneficiaries.joined(separator: ", "))
-                    }
-                } else if viewModel.isLoadingDetail {
-                    progressView
                 }
-            }
             
             Section("Recent Transactions") {
-                if viewModel.didFailLoadingDetail {
+                if viewModel.didFailLoadingTransaction {
                     ErrorView(
                         title: "Unable to Load Transactions",
                         description: "We are experiencing delays in retrieving your statement. Please try again in a few minutes.",
                         size: .small
                     ) {
                         Task {
-                            await viewModel.loadTransactions(reset: true)
+                            await viewModel.loadTransactions(reset: true, displayingAlertWhentFails: true)
                         }
                     }
                 } else if viewModel.allTransactionsLoaded, viewModel.transactions.isEmpty {
@@ -86,18 +86,20 @@ struct AccountDetailView: View {
                         size: .small
                     ) {
                         Task {
-                            await viewModel.loadTransactions(reset: true)
+                            await viewModel.loadTransactions(reset: true, displayingAlertWhentFails: true)
                         }
                     }
                 } else {
-                    ForEach(viewModel.transactions) { transaction in
+                    ForEach(viewModel.transactions, id: \.self) { transaction in
                         TransactionRow(transaction: transaction, currency: account.currencyCode)
-                            .onAppear {
-                                viewModel.loadMoreIfNeeded(currentTransaction: transaction)
-                            }
                     }
-                    if viewModel.isLoadingMore {
+                    if !viewModel.allTransactionsLoaded {
                         progressView
+                            .onAppear {
+                                if !viewModel.transactions.isEmpty {
+                                    viewModel.loadMoreIfNeeded()
+                                }
+                            }
                     }
                 }
             }
@@ -112,10 +114,12 @@ struct AccountDetailView: View {
                 }
             }
         }
+        .noConnectionAlert(isPresented: $viewModel.displayingErrorAlert)
         .task {
             await viewModel.loadDetail()
             await viewModel.loadTransactions(reset: true)
-        }    }
+        }
+    }
     
     var progressView: some View {
         Color.clear

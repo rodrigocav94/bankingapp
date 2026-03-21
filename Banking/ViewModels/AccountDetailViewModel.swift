@@ -18,6 +18,7 @@ class AccountDetailViewModel: ObservableObject {
     @Published var didFailLoadingTransaction: Bool = false
     @Published var allTransactionsLoaded = false
     @Published var isDisplayingTitle = false
+    @Published var displayingErrorAlert = false
 
     private let apiService: APIService
     private let accountId: String
@@ -38,19 +39,22 @@ class AccountDetailViewModel: ObservableObject {
         self.toDate = formatter.string(from: now)
     }
 
-    func loadDetail() async {
+    func loadDetail(displayingAlertWhentFails: Bool = false) async {
         isLoadingDetail = true
         didFailLoadingDetail = false
         do {
             detail = try await apiService.fetchAccountDetail(accountId: accountId)
         } catch {
+            if displayingAlertWhentFails {
+                displayingErrorAlert = true
+            }
             didFailLoadingDetail = true
             print(error.localizedDescription)
         }
         isLoadingDetail = false
     }
 
-    func loadTransactions(reset: Bool = false) async {
+    func loadTransactions(reset: Bool = false, displayingAlertWhentFails: Bool = false) async {
         if reset {
             currentPage = 0
             transactions = []
@@ -68,25 +72,30 @@ class AccountDetailViewModel: ObservableObject {
                 fromDate: fromDate,
                 toDate: toDate
             )
-            transactions.append(contentsOf: newTransactions)
+            var updatedTransactions = transactions
+            updatedTransactions.append(contentsOf: newTransactions)
+            updatedTransactions = Array(Set(updatedTransactions)).sorted(by: {$0.date > $1.date})
+            transactions = updatedTransactions
+            
             totalPages = paging.pagesCount
             currentPage += 1
             if currentPage >= paging.pagesCount {
                 allTransactionsLoaded = true
             }
         } catch {
+            if displayingAlertWhentFails {
+                displayingErrorAlert = true
+            }
             didFailLoadingTransaction = true
             print(error.localizedDescription)
         }
         isLoadingMore = false
     }
 
-    func loadMoreIfNeeded(currentTransaction: Transaction?) {
-        guard let current = currentTransaction,
-              !isLoadingMore,
-              !allTransactionsLoaded,
-              let thresholdIndex = transactions.firstIndex(where: { $0.id == current.id }),
-              thresholdIndex == transactions.index(transactions.endIndex, offsetBy: -5) else { return }
+    func loadMoreIfNeeded() {
+        if isLoadingMore || allTransactionsLoaded {
+            return
+        }
         Task { await loadTransactions() }
     }
 }

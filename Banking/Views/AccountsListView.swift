@@ -34,11 +34,7 @@ struct AccountsListView: View {
             }
             .navigationTitle("Select Account")
             .toolbar(viewModel.didFailLoading ? .hidden : .visible)
-            .alert("Service Unreachable", isPresented: $viewModel.displayingErrorAlert) {
-                Button("OK", role: .cancel) {}
-            } message: {
-                Text("We're experiencing persistent connection issues. Please try again in a few minutes.")
-            }
+            .noConnectionAlert(isPresented: $viewModel.displayingErrorAlert)
             .navigationDestination(for: Account.self) { account in
                 AccountDetailView(account: account)
                     .navigationTransition(
