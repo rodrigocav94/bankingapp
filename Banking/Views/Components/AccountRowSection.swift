@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AccountRowSection: View {
+    @Environment(\.layoutDirection) private var layoutDirection
     @Environment(\.redactionReasons) private var redactionReasons
     let account: Account
     let isFavorite: Bool
@@ -27,6 +28,7 @@ struct AccountRowSection: View {
     private var illustrationBackground: some View {
         Image(account.accountType.illustration)
             .accentArtstyle()
+            .rotation3DEffect(.degrees(layoutDirection == .rightToLeft ? 180 : 0), axis: (x: 0, y: 1, z: 0))
             .offset(x: 60)
     }
     
