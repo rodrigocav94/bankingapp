@@ -19,6 +19,7 @@ class AccountDetailViewModel: ObservableObject {
     @Published var allTransactionsLoaded = false
     @Published var isDisplayingTitle = false
     @Published var displayingErrorAlert = false
+    @Published var showingDateRangePicker = false
     @Published var fromDate: Date
     @Published var toDate: Date
 

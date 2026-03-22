@@ -11,7 +11,6 @@ struct AccountDetailView: View {
     let account: Account
     @StateObject private var viewModel: AccountDetailViewModel
     @ObservedObject var favoriteManager = FavoriteManager.shared
-    @State private var showingDateRangePicker = false
 
     init(account: Account, apiService: APIService = APIService()) {
         self.account = account
@@ -119,7 +118,7 @@ struct AccountDetailView: View {
             ToolbarItemGroup(placement: .bottomBar) {
                 Spacer()
                 Button {
-                    showingDateRangePicker = true
+                    viewModel.showingDateRangePicker = true
                 } label: {
                     Label("Select date range", systemImage: "line.3.horizontal.decrease")
                 }
@@ -127,7 +126,7 @@ struct AccountDetailView: View {
             }
         }
         .noConnectionAlert(isPresented: $viewModel.displayingErrorAlert)
-        .sheet(isPresented: $showingDateRangePicker, onDismiss: {
+        .sheet(isPresented: $viewModel.showingDateRangePicker, onDismiss: {
             Task {
                 await viewModel.reloadTransactionsIfDatesChanged()
             }
@@ -151,6 +150,6 @@ struct AccountDetailView: View {
 
 #Preview {
     NavigationStack {
-        AccountDetailView(account: .example())
+        AccountDetailView(account: .example(), apiService: APIService())
     }
 }
