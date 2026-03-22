@@ -7,30 +7,78 @@
 
 import XCTest
 @testable import Banking
+@MainActor
+final class MockAPIServiceTests: XCTestCase {
 
-final class BankingTests: XCTestCase {
+    // MARK: - MockAPIService
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testMockReturnsConfiguredAccounts() async throws {
+        let mock = MockAPIService()
+        let accounts = [
+            Account(id: "1", accountNumber: 111, balance: "100", currencyCode: "EUR", accountType: .current, accountNickname: nil)
+        ]
+        mock.accountsToReturn = accounts
+
+        let result = try await mock.fetchAccounts()
+        XCTAssertEqual(result.count, 1)
+        XCTAssertEqual(result.first?.id, "1")
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testMockReturnsConfiguredDetail() async throws {
+        let mock = MockAPIService()
+        let detail = AccountDetail(productName: "Test", openedDate: nil, branch: "HQ", beneficiaries: nil)
+        mock.detailToReturn = detail
+
+        let result = try await mock.fetchAccountDetail(accountId: "any")
+        XCTAssertEqual(result.productName, "Test")
+        XCTAssertEqual(result.branch, "HQ")
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testMockReturnsConfiguredTransactions() async throws {
+        let mock = MockAPIService()
+        let tx = Transaction(id: "tx1", date: .now, transactionAmount: "10", transactionType: "t", description: nil, isDebit: false)
+        mock.transactionsToReturn = [tx]
+        mock.totalPages = 3
+
+        let (transactions, paging) = try await mock.fetchTransactions(accountId: "any", page: 0, size: 20, fromDate: "", toDate: "")
+        XCTAssertEqual(transactions.count, 1)
+        XCTAssertEqual(paging.pagesCount, 3)
+        XCTAssertEqual(paging.currentPage, 0)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testMockThrowsConfiguredError() async {
+        let mock = MockAPIService()
+        mock.errorToThrow = APIError.invalidURL
+
+        do {
+            _ = try await mock.fetchAccounts()
+            XCTFail("Expected error to be thrown")
+        } catch {
+            XCTAssertTrue(error is APIError)
         }
     }
 
+    func testMockThrowsOnFetchDetail() async {
+        let mock = MockAPIService()
+        mock.errorToThrow = APIError.invalidResponse
+
+        do {
+            _ = try await mock.fetchAccountDetail(accountId: "any")
+            XCTFail("Expected error to be thrown")
+        } catch {
+            XCTAssertTrue(error is APIError)
+        }
+    }
+
+    func testMockThrowsOnFetchTransactions() async {
+        let mock = MockAPIService()
+        mock.errorToThrow = APIError.decodingFailed(NSError(domain: "", code: 0))
+
+        do {
+            _ = try await mock.fetchTransactions(accountId: "any", page: 0, size: 20, fromDate: "", toDate: "")
+            XCTFail("Expected error to be thrown")
+        } catch {
+            XCTAssertTrue(error is APIError)
+        }
+    }
 }

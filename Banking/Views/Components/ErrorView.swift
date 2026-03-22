@@ -68,7 +68,7 @@ struct ErrorView: View {
     var body: some View {
         VStack(spacing: size.itemSpacing) {
             Image(icon)
-                .accentArtstyle(size: size.imageSize)
+                .accentArtstyle(size: size.imageSize, squashable: true)
             VStack(spacing: size.textSpacing) {
                 Text(title)
                     .font(size.titleFont)
@@ -76,6 +76,7 @@ struct ErrorView: View {
                     .font(size.descriptionFont)
                     .foregroundStyle(.secondary)
             }
+            .layoutPriority(1)
             if let onRetry {
                 Button("Try Again") {
                     onRetry()

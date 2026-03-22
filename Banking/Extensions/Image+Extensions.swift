@@ -8,11 +8,11 @@
 import SwiftUI
 
 extension Image {
-    func accentArtstyle(size: Double = 280) -> some View {
+    func accentArtstyle(size: Double = 280, squashable: Bool = false) -> some View {
         self
         .resizable()
         .scaledToFit()
-        .frame(height: size)
+        .frame(minHeight: squashable ? 0 : size, maxHeight: size)
         .background(.white)
         .overlay(Color.accent.blendMode(.screen))
         .mask {

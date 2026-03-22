@@ -30,6 +30,7 @@ struct AccountsListView: View {
                     ) {
                         Task { await viewModel.loadAccounts() }
                     }
+                    .edgesIgnoringSafeArea(.all)
                 }
             }
             .navigationTitle("Select Account")
