@@ -25,6 +25,15 @@ enum AccountType: String, Codable, CaseIterable {
     }
     
     var title: LocalizedStringResource {
-        LocalizedStringResource(stringLiteral: self.rawValue.capitalized)
+        switch self {
+        case .current:
+            "Current"
+        case .savings:
+            "Savings"
+        case .time:
+            "Time"
+        case .creditCard:
+            "Credit Card"
+        }
     }
 }

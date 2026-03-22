@@ -24,9 +24,6 @@ struct TransactionRow: View {
                 .bold()
         }
         .padding(.vertical, 4)
-        .onAppear {
-            print(transaction)
-        }
     }
 }
 
