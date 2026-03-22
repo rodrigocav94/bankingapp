@@ -24,105 +24,18 @@ struct AccountDetailView: View {
 
     var body: some View {
         List {
-            AccountRowSection(account: account, isFavorite: false)
-                .onAppear {
-                    viewModel.isDisplayingTitle = false
-                }
-                .onDisappear {
-                    viewModel.isDisplayingTitle = true
-                }
-            
-            Section(
-                header: Text("Account Details"),
-                footer: HStack {
-                    if viewModel.didFailLoadingDetail {
-                        Text("We couldn't load more details for the selected account.")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Button {
-                            Task {
-                                await viewModel.loadDetail(displayingAlertWhentFails: true)
-                            }
-                        } label: {
-                            Text("Retry")
-                                .font(.callout)
-                        }
-                    }
-                }) {
-                    LabeledContent("Type", value: String(localized: account.accountType.title))
-                    LabeledContent("Balance", value: account.balance.asLocalizedCurrency(code: account.currencyCode))
-                    if let detail = viewModel.detail {
-                        if let product = detail.productName {
-                            LabeledContent("Product", value: product)
-                        }
-                        if let opened = detail.openedDate {
-                            LabeledContent("Opened", value: opened.formatted())
-                        }
-                        if let branch = detail.branch {
-                            LabeledContent("Branch", value: branch)
-                        }
-                        if let beneficiaries = detail.beneficiaries, !beneficiaries.isEmpty {
-                            LabeledContent("Beneficiaries", value: beneficiaries.joined(separator: ", "))
-                        }
-                    } else if viewModel.isLoadingDetail {
-                        progressView
-                    }
-                }
-            
-            Section("Recent Transactions") {
-                if viewModel.didFailLoadingTransaction {
-                    ErrorView(
-                        title: "Unable to Load Transactions",
-                        description: "We are experiencing delays in retrieving your statement. Please try again in a few minutes.",
-                        size: .small
-                    ) {
-                        Task {
-                            await viewModel.loadTransactions(reset: true, displayingAlertWhentFails: true)
-                        }
-                    }
-                } else if viewModel.allTransactionsLoaded, viewModel.transactions.isEmpty {
-                    ErrorView(
-                        icon: .box,
-                        title: "No Transactions Found",
-                        description: "Try selecting a different time range.",
-                        size: .small
-                    ) {
-                        Task {
-                            await viewModel.loadTransactions(reset: true, displayingAlertWhentFails: true)
-                        }
-                    }
-                } else {
-                    ForEach(viewModel.transactions, id: \.self) { transaction in
-                        TransactionRow(transaction: transaction, currency: account.currencyCode)
-                    }
-                    if !viewModel.allTransactionsLoaded {
-                        progressView
-                            .onAppear {
-                                if !viewModel.transactions.isEmpty {
-                                    viewModel.loadMoreIfNeeded()
-                                }
-                            }
-                    }
-                }
-            }
+            accountHeaderSection
+            accountDetailsSection
+            transactionsSection
         }
         .navigationTitle(viewModel.isDisplayingTitle ? account.displayName : "")
         .toolbar {
             ToolbarItem {
-                Button {
-                    favoriteManager.toggleFavorite(accountId: account.id)
-                } label: {
-                    Image(systemName: favoriteManager.favoriteAccountIds.contains(account.id) ? "star.fill" : "star")
-                }
+                favoriteButton
             }
-            
             ToolbarItemGroup(placement: .bottomBar) {
                 Spacer()
-                Button {
-                    viewModel.showingDateRangePicker = true
-                } label: {
-                    Label("Select date range", systemImage: "line.3.horizontal.decrease")
-                }
-                .buttonStyle(.borderedProminent)
+                dateRangeButton
             }
         }
         .noConnectionAlert(isPresented: $viewModel.displayingErrorAlert)
@@ -138,8 +51,158 @@ struct AccountDetailView: View {
             await viewModel.loadTransactions(reset: true)
         }
     }
-    
-    var progressView: some View {
+}
+
+// MARK: - Sections
+
+private extension AccountDetailView {
+    var accountHeaderSection: some View {
+        AccountRowSection(account: account, isFavorite: false)
+            .onAppear {
+                viewModel.isDisplayingTitle = false
+            }
+            .onDisappear {
+                viewModel.isDisplayingTitle = true
+            }
+    }
+
+    var accountDetailsSection: some View {
+        Section(
+            header: Text("Account Details"),
+            footer: detailRetryFooter
+        ) {
+            LabeledContent("Type", value: String(localized: account.accountType.title))
+            LabeledContent("Balance", value: account.balance.asLocalizedCurrency(code: account.currencyCode))
+            if let detail = viewModel.detail {
+                detailRows(for: detail)
+            } else if viewModel.isLoadingDetail {
+                loadingIndicator
+            }
+        }
+    }
+
+    var transactionsSection: some View {
+        Section("Recent Transactions") {
+            if viewModel.didFailLoadingTransaction {
+                transactionErrorView
+            } else if viewModel.allTransactionsLoaded, viewModel.transactions.isEmpty {
+                emptyTransactionsView
+            } else {
+                transactionsList
+            }
+        }
+    }
+}
+
+// MARK: - Account Detail Subviews
+
+private extension AccountDetailView {
+    @ViewBuilder
+    func detailRows(for detail: AccountDetail) -> some View {
+        if let product = detail.productName {
+            LabeledContent("Product", value: product)
+        }
+        if let opened = detail.openedDate {
+            LabeledContent("Opened", value: opened.formatted())
+        }
+        if let branch = detail.branch {
+            LabeledContent("Branch", value: branch)
+        }
+        if let beneficiaries = detail.beneficiaries, !beneficiaries.isEmpty {
+            LabeledContent("Beneficiaries", value: beneficiaries.joined(separator: ", "))
+        }
+    }
+
+    @ViewBuilder
+    var detailRetryFooter: some View {
+        if viewModel.didFailLoadingDetail {
+            HStack {
+                Text("We couldn't load more details for the selected account.")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Button {
+                    Task {
+                        await viewModel.loadDetail(displayingAlertWhentFails: true)
+                    }
+                } label: {
+                    Text("Retry")
+                        .font(.callout)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Transaction Subviews
+
+private extension AccountDetailView {
+    var transactionErrorView: some View {
+        ErrorView(
+            title: "Unable to Load Transactions",
+            description: "We are experiencing delays in retrieving your statement. Please try again in a few minutes.",
+            size: .small
+        ) {
+            Task {
+                await viewModel.loadTransactions(reset: true, displayingAlertWhentFails: true)
+            }
+        }
+    }
+
+    var emptyTransactionsView: some View {
+        ErrorView(
+            icon: .box,
+            title: "No Transactions Found",
+            description: "Try selecting a different time range.",
+            size: .small
+        ) {
+            Task {
+                await viewModel.loadTransactions(reset: true, displayingAlertWhentFails: true)
+            }
+        }
+    }
+
+    var transactionsList: some View {
+        Group {
+            ForEach(viewModel.transactions, id: \.self) { transaction in
+                TransactionRow(transaction: transaction, currency: account.currencyCode)
+            }
+            if !viewModel.allTransactionsLoaded {
+                loadingIndicator
+                    .onAppear {
+                        if !viewModel.transactions.isEmpty {
+                            viewModel.loadMoreIfNeeded()
+                        }
+                    }
+            }
+        }
+    }
+}
+
+// MARK: - Toolbar
+
+private extension AccountDetailView {
+    var favoriteButton: some View {
+        Button {
+            favoriteManager.toggleFavorite(accountId: account.id)
+        } label: {
+            Image(systemName: favoriteManager.favoriteAccountIds.contains(account.id) ? "star.fill" : "star")
+        }
+    }
+
+    var dateRangeButton: some View {
+        Button {
+            viewModel.showingDateRangePicker = true
+        } label: {
+            Label("Select date range", systemImage: "line.3.horizontal.decrease")
+        }
+        .frame(maxWidth: .infinity, alignment: .trailing)
+        .buttonStyle(.borderedProminent)
+    }
+}
+
+// MARK: - Shared Components
+
+private extension AccountDetailView {
+    var loadingIndicator: some View {
         Color.clear
             .frame(height: 20)
             .overlay {
