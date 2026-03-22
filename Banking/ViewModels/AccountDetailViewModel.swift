@@ -23,7 +23,7 @@ class AccountDetailViewModel: ObservableObject {
     @Published var fromDate: Date
     @Published var toDate: Date
 
-    private let apiService: APIService
+    private let apiService: APIServiceProtocol
     private let accountId: String
     private var currentPage = 0
     private var totalPages: Int?
@@ -31,7 +31,7 @@ class AccountDetailViewModel: ObservableObject {
     private var lastLoadedFromDate: Date
     private var lastLoadedToDate: Date
 
-    init(accountId: String, apiService: APIService = APIService()) {
+    init(accountId: String, apiService: APIServiceProtocol = APIService()) {
         self.accountId = accountId
         self.apiService = apiService
         let now = Date()

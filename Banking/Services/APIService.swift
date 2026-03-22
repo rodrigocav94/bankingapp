@@ -14,7 +14,13 @@ enum APIError: Error {
     case decodingFailed(Error)
 }
 
-class APIService {
+protocol APIServiceProtocol: Sendable {
+    func fetchAccounts() async throws -> [Account]
+    func fetchAccountDetail(accountId: String) async throws -> AccountDetail
+    func fetchTransactions(accountId: String, page: Int, size: Int, fromDate: String, toDate: String) async throws -> ([Transaction], TransactionsResponse.Paging)
+}
+
+class APIService: APIServiceProtocol {
     private let baseURL = "http://ktor-env.eba-asssfhm8.eu-west-1.elasticbeanstalk.com"
     private let session = URLSession.shared
     private let authHeader: String

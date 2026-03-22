@@ -12,7 +12,7 @@ struct AccountDetailView: View {
     @StateObject private var viewModel: AccountDetailViewModel
     @ObservedObject var favoriteManager = FavoriteManager.shared
 
-    init(account: Account, apiService: APIService = APIService()) {
+    init(account: Account, apiService: APIServiceProtocol = APIService()) {
         self.account = account
         _viewModel = StateObject(
             wrappedValue: AccountDetailViewModel(
@@ -150,6 +150,6 @@ struct AccountDetailView: View {
 
 #Preview {
     NavigationStack {
-        AccountDetailView(account: .example(), apiService: APIService())
+        AccountDetailView(account: .example(), apiService: MockAPIService())
     }
 }
