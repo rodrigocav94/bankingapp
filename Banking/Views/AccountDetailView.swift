@@ -11,12 +11,14 @@ struct AccountDetailView: View {
     let account: Account
     @StateObject private var viewModel: AccountDetailViewModel
     @ObservedObject var favoriteManager = FavoriteManager.shared
+    @State private var showingDateRangePicker = false
 
-    init(account: Account) {
+    init(account: Account, apiService: APIService = APIService()) {
         self.account = account
         _viewModel = StateObject(
             wrappedValue: AccountDetailViewModel(
-                accountId: account.id
+                accountId: account.id,
+                apiService: apiService
             )
         )
     }
@@ -113,8 +115,25 @@ struct AccountDetailView: View {
                     Image(systemName: favoriteManager.favoriteAccountIds.contains(account.id) ? "star.fill" : "star")
                 }
             }
+            
+            ToolbarItemGroup(placement: .bottomBar) {
+                Spacer()
+                Button {
+                    showingDateRangePicker = true
+                } label: {
+                    Label("Select date range", systemImage: "line.3.horizontal.decrease")
+                }
+                .buttonStyle(.borderedProminent)
+            }
         }
         .noConnectionAlert(isPresented: $viewModel.displayingErrorAlert)
+        .sheet(isPresented: $showingDateRangePicker, onDismiss: {
+            Task {
+                await viewModel.reloadTransactionsIfDatesChanged()
+            }
+        }) {
+            DateRangePickerSheet(fromDate: $viewModel.fromDate, toDate: $viewModel.toDate)
+        }
         .task {
             await viewModel.loadDetail()
             await viewModel.loadTransactions(reset: true)
@@ -130,22 +149,8 @@ struct AccountDetailView: View {
     }
 }
 
-struct TransactionRow: View {
-    let transaction: Transaction
-    let currency: String
-
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(transaction.description ?? transaction.transactionType)
-                Text(transaction.date.formatted())
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            Text(transaction.transactionAmount.asLocalizedCurrency(code: currency))
-                .bold()
-        }
-        .padding(.vertical, 4)
+#Preview {
+    NavigationStack {
+        AccountDetailView(account: .example())
     }
 }

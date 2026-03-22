@@ -15,3 +15,16 @@ struct Transaction: Identifiable, Codable, Hashable {
     let description: String?
     let isDebit: Bool
 }
+
+extension Transaction {
+    static let example: Transaction = {
+        Transaction(
+            id: UUID().uuidString,
+            date: .now,
+            transactionAmount: "478.51",
+            transactionType: "intrabank",
+            description: nil,
+            isDebit: false
+        )
+    }()
+}

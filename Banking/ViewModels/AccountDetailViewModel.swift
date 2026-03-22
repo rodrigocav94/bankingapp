@@ -19,24 +19,26 @@ class AccountDetailViewModel: ObservableObject {
     @Published var allTransactionsLoaded = false
     @Published var isDisplayingTitle = false
     @Published var displayingErrorAlert = false
+    @Published var fromDate: Date
+    @Published var toDate: Date
 
     private let apiService: APIService
     private let accountId: String
     private var currentPage = 0
     private var totalPages: Int?
     private let pageSize = 20
-    private let fromDate: String
-    private let toDate: String
+    private var lastLoadedFromDate: Date
+    private var lastLoadedToDate: Date
 
     init(accountId: String, apiService: APIService = APIService()) {
         self.accountId = accountId
         self.apiService = apiService
         let now = Date()
-        let tenYearsAgo = Calendar.current.date(byAdding: .year, value: -10, to: now)!
-        let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime]
-        self.fromDate = formatter.string(from: tenYearsAgo)
-        self.toDate = formatter.string(from: now)
+        self.toDate = now
+        let thirtyYearsAgo = Calendar.current.date(byAdding: .year, value: -30, to: now)!
+        self.fromDate = thirtyYearsAgo
+        self.lastLoadedFromDate = thirtyYearsAgo
+        self.lastLoadedToDate = now
     }
 
     func loadDetail(displayingAlertWhentFails: Bool = false) async {
@@ -64,6 +66,13 @@ class AccountDetailViewModel: ObservableObject {
         guard !allTransactionsLoaded else { return }
         isLoadingMore = true
         didFailLoadingTransaction = false
+        
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime]
+        
+        let fromDate = formatter.string(from: fromDate)
+        let toDate = formatter.string(from: toDate)
+        
         do {
             let (newTransactions, paging) = try await apiService.fetchTransactions(
                 accountId: accountId,
@@ -90,6 +99,13 @@ class AccountDetailViewModel: ObservableObject {
             print(error.localizedDescription)
         }
         isLoadingMore = false
+    }
+
+    func reloadTransactionsIfDatesChanged() async {
+        guard fromDate != lastLoadedFromDate || toDate != lastLoadedToDate else { return }
+        lastLoadedFromDate = fromDate
+        lastLoadedToDate = toDate
+        await loadTransactions(reset: true)
     }
 
     func loadMoreIfNeeded() {
