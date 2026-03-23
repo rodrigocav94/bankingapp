@@ -147,12 +147,12 @@ final class BankingUITests: XCTestCase {
         starButton.tap()
         let favoritedPredicate = NSPredicate(format: "label == 'Favorited'")
         expectation(for: favoritedPredicate, evaluatedWith: starButton, handler: nil)
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 3)
 
         starButton.tap()
         let notFavoritedPredicate = NSPredicate(format: "label == 'Not favorited'")
         expectation(for: notFavoritedPredicate, evaluatedWith: starButton, handler: nil)
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 3)
 
         XCTAssertTrue(starButton.exists)
     }

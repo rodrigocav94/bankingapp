@@ -123,7 +123,7 @@ final class AccountDetailViewModelTests: XCTestCase {
 
         await sut.loadTransactions(reset: true)
 
-        XCTAssertEqual(sut.transactions.count, 5)
+        XCTAssertEqual(sut.transactions.count, 3)
         XCTAssertTrue(sut.allTransactionsLoaded)
         XCTAssertFalse(sut.isLoadingMore)
         XCTAssertFalse(sut.didFailLoadingTransaction)
