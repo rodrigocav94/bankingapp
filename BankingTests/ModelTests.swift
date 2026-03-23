@@ -75,9 +75,9 @@ final class ModelTests: XCTestCase {
     }
 
     func testTransactionConformsToHashable() {
-        let a = Transaction(id: "1", date: .now, transactionAmount: "10", transactionType: "t", description: nil, isDebit: false)
-        let b = Transaction(id: "1", date: .now, transactionAmount: "10", transactionType: "t", description: nil, isDebit: false)
-        // Same id should produce same hash
+        let date = Date.now
+        let a = Transaction(id: "1", date: date, transactionAmount: "10", transactionType: "t", description: nil, isDebit: false)
+        let b = Transaction(id: "1", date: date, transactionAmount: "10", transactionType: "t", description: nil, isDebit: false)
         XCTAssertEqual(a.hashValue, b.hashValue)
     }
 
@@ -202,7 +202,6 @@ final class ModelTests: XCTestCase {
 
     func testAsLocalizedCurrencyWithValidNumber() {
         let result = "99.99".asLocalizedCurrency(code: "USD")
-        // Should contain the amount — exact format depends on locale
         XCTAssertTrue(result.contains("99"))
     }
 
