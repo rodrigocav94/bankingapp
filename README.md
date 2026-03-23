@@ -6,7 +6,7 @@ A simulated banking app that displays a list of accounts and, upon selection, sh
 
 ## Architecture
 
-The app follows the **MVVM (Model-View-ViewModel)** pattern, a natural fit for a project of this scope — keeping the codebase clean and straightforward without unnecessary abstraction layers.
+The app follows the **MVVM (Model-View-ViewModel)** pattern, a natural fit for a project of this scope, keeping the codebase clean and straightforward without unnecessary abstraction layers.
 
 ## Design
 
