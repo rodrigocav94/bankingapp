@@ -9,13 +9,16 @@ import SwiftUI
 
 struct AccountsListView: View {
     @Namespace private var namespace
-    @StateObject private var viewModel = AccountsListViewModel()
+    @StateObject private var viewModel: AccountsListViewModel
     @StateObject private var favoriteManager = FavoriteManager.shared
-    fileprivate var usingPlaceholder: Bool = false
+
+    init(apiService: APIServiceProtocol = APIService()) {
+        _viewModel = StateObject(wrappedValue: AccountsListViewModel(apiService: apiService))
+    }
     
     var body: some View {
         NavigationStack(path: $viewModel.path) {
-            List((viewModel.isLoading || usingPlaceholder) ? viewModel.placeholderAccounts : viewModel.accounts) { account in
+            List((viewModel.isLoading) ? viewModel.placeholderAccounts : viewModel.accounts) { account in
                 accountRow(for: account)
             }
             .listSectionSpacing(16)
@@ -37,7 +40,7 @@ struct AccountsListView: View {
             .toolbar(viewModel.didFailLoading ? .hidden : .visible)
             .noConnectionAlert(isPresented: $viewModel.displayingErrorAlert)
             .navigationDestination(for: Account.self) { account in
-                AccountDetailView(account: account)
+                AccountDetailView(account: account, apiService: viewModel.apiService)
                     .navigationTransition(
                         .zoom(
                             sourceID: account.id,
@@ -47,9 +50,7 @@ struct AccountsListView: View {
             }
         }
         .task {
-            if !usingPlaceholder {
-                await viewModel.loadAccounts()
-            }
+            await viewModel.loadAccounts()
         }
     }
     
@@ -71,5 +72,5 @@ struct AccountsListView: View {
 }
 
 #Preview {
-    AccountsListView(usingPlaceholder: true)
+    AccountsListView(apiService: MockAPIService())
 }

@@ -27,4 +27,9 @@ extension Account {
             accountNickname: "My Salary"
         )
     }
+    static let examples: [Account] = [
+        Account(id: "acc-1", accountNumber: 10001, balance: "1250.75", currencyCode: "EUR", accountType: .current, accountNickname: "My Salary"),
+        Account(id: "acc-2", accountNumber: 20002, balance: "5430.00", currencyCode: "EUR", accountType: .savings, accountNickname: "Savings Goal"),
+        Account(id: "acc-3", accountNumber: 30003, balance: "320.50", currencyCode: "EUR", accountType: .creditCard, accountNickname: nil),
+    ]
 }

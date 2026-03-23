@@ -17,7 +17,7 @@ class AccountsListViewModel: ObservableObject {
     @Published var displayingErrorAlert: Bool = false
     @Published var path = NavigationPath()
 
-    private let apiService: APIServiceProtocol
+    let apiService: APIServiceProtocol
 
     init(apiService: APIServiceProtocol = APIService()) {
         self.apiService = apiService

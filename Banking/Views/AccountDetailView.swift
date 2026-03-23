@@ -186,6 +186,8 @@ private extension AccountDetailView {
         } label: {
             Image(systemName: favoriteManager.favoriteAccountIds.contains(account.id) ? "star.fill" : "star")
         }
+        .accessibilityIdentifier("favoriteButton")
+        .accessibilityLabel(favoriteManager.favoriteAccountIds.contains(account.id) ? "Favorited" : "Not favorited")
     }
 
     var dateRangeButton: some View {

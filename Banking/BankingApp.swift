@@ -9,9 +9,19 @@ import SwiftUI
 
 @main
 struct BankingApp: App {
+    private let apiService: APIServiceProtocol
+
+    init() {
+        if ProcessInfo.processInfo.arguments.contains("-useMockData") {
+            apiService = MockAPIService()
+        } else {
+            apiService = APIService()
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
-            AccountsListView()
+            AccountsListView(apiService: apiService)
         }
     }
 }

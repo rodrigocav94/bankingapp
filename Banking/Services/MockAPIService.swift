@@ -47,4 +47,10 @@ class MockAPIService: APIServiceProtocol {
         )
         return (transactionsToReturn, paging)
     }
+    
+    init() {
+        accountsToReturn = Account.examples
+        detailToReturn = .example
+        transactionsToReturn = Transaction.examples
+    }
 }

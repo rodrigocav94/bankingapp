@@ -11,22 +11,22 @@
             "value" : "تفاصيل الحساب"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "账户详情"
+            "value" : "Kontodetails"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalles de la cuenta"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Détails du compte"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kontodetails"
           }
         },
         "it" : {
@@ -47,10 +47,10 @@
             "value" : "Detalhes da conta"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Detalles de la cuenta"
+            "value" : "账户详情"
           }
         }
       }
@@ -65,22 +65,22 @@
             "value" : "الحساب: %@"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "账户：%@"
+            "value" : "Konto: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuenta: %@"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Compte : %@"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Konto: %@"
           }
         },
         "it" : {
@@ -101,10 +101,10 @@
             "value" : "Conta: %@"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cuenta: %@"
+            "value" : "账户：%@"
           }
         }
       }
@@ -119,22 +119,22 @@
             "value" : "الرصيد"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "余额"
+            "value" : "Saldo"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Solde"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Saldo"
           }
         },
         "it" : {
@@ -155,10 +155,10 @@
             "value" : "Saldo"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Saldo"
+            "value" : "余额"
           }
         }
       }
@@ -173,22 +173,22 @@
             "value" : "المستفيدون"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "受益人"
+            "value" : "Begünstigte"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beneficiarios"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bénéficiaires"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Begünstigte"
           }
         },
         "it" : {
@@ -209,10 +209,10 @@
             "value" : "Beneficiários"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beneficiarios"
+            "value" : "受益人"
           }
         }
       }
@@ -227,22 +227,22 @@
             "value" : "الفرع"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "分行"
+            "value" : "Filiale"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sucursal"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Succursale"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Filiale"
           }
         },
         "it" : {
@@ -263,10 +263,10 @@
             "value" : "Agência"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sucursal"
+            "value" : "分行"
           }
         }
       }
@@ -281,22 +281,22 @@
             "value" : "اختر تاريخ البداية والانتهاء لعرض سجل المعاملات لفترة محددة."
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择开始和结束日期，以查看特定时间段内的交易记录。"
+            "value" : "Wählen Sie ein Start- und Enddatum, um Ihren Transaktionsverlauf für einen bestimmten Zeitraum anzuzeigen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elija una fecha de inicio y finalización para ver su historial de transacciones durante un período específico."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Choisissez une date de début et de fin pour afficher l'historique de vos transactions pour une période spécifique."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wählen Sie ein Start- und Enddatum, um Ihren Transaktionsverlauf für einen bestimmten Zeitraum anzuzeigen."
           }
         },
         "it" : {
@@ -317,10 +317,10 @@
             "value" : "Escolha uma data de início e término para visualizar o histórico de transações para um período específico."
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elija una fecha de inicio y finalización para ver su historial de transacciones durante un período específico."
+            "value" : "选择开始和结束日期，以查看特定时间段内的交易记录。"
           }
         }
       }
@@ -334,22 +334,22 @@
             "value" : "بطاقة ائتمان"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "信用卡"
+            "value" : "Kreditkarte"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarjeta de crédito"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Carte de crédit"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kreditkarte"
           }
         },
         "it" : {
@@ -370,10 +370,10 @@
             "value" : "Cartão de crédito"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tarjeta de crédito"
+            "value" : "信用卡"
           }
         }
       }
@@ -387,22 +387,22 @@
             "value" : "جارٍ"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "活期"
+            "value" : "Giro"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corriente"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Courant"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Giro"
           }
         },
         "it" : {
@@ -423,10 +423,10 @@
             "value" : "Corrente"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Corriente"
+            "value" : "活期"
           }
         }
       }
@@ -441,22 +441,22 @@
             "value" : "تم"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "完成"
+            "value" : "Fertig"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hecho"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terminé"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fertig"
           }
         },
         "it" : {
@@ -477,13 +477,17 @@
             "value" : "Concluído"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hecho"
+            "value" : "完成"
           }
         }
       }
+    },
+    "Favorited" : {
+      "comment" : "An accessibility label indicating that an item is marked as favorite.",
+      "isCommentAutoGenerated" : true
     },
     "From" : {
       "comment" : "A label for the \"From\" date picker.",
@@ -495,22 +499,22 @@
             "value" : "من"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "从"
+            "value" : "Von"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desde"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "De"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Von"
           }
         },
         "it" : {
@@ -531,10 +535,10 @@
             "value" : "De"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desde"
+            "value" : "从"
           }
         }
       }
@@ -549,22 +553,22 @@
             "value" : "الانتقال إلى تفاصيل %@"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "转到 %@ 的详细信息"
+            "value" : "Geht zu %@ Details"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ir a los detalles de %@"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accéder aux détails de %@"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geht zu %@ Details"
           }
         },
         "it" : {
@@ -585,10 +589,10 @@
             "value" : "Vai para os detalhes de %@"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ir a los detalles de %@"
+            "value" : "转到 %@ 的详细信息"
           }
         }
       }
@@ -603,22 +607,22 @@
             "value" : "هيوستن، لدينا مشكلة!"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "休斯顿，我们遇到问题了！"
+            "value" : "Houston, wir haben ein Problem!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Houston, tenemos un problema!"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Houston, nous avons un problème !"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Houston, wir haben ein Problem!"
           }
         },
         "it" : {
@@ -639,10 +643,10 @@
             "value" : "Houston, temos um problema!"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Houston, tenemos un problema!"
+            "value" : "休斯顿，我们遇到问题了！"
           }
         }
       }
@@ -657,22 +661,22 @@
             "value" : "لا توجد معاملات"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "未找到交易记录"
+            "value" : "Keine Transaktionen gefunden"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontraron transacciones"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucune transaction trouvée"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Keine Transaktionen gefunden"
           }
         },
         "it" : {
@@ -693,13 +697,17 @@
             "value" : "Nenhuma transação encontrada"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No se encontraron transacciones"
+            "value" : "未找到交易记录"
           }
         }
       }
+    },
+    "Not favorited" : {
+      "comment" : "An accessibility label for the favorite button when the account is not favorited.",
+      "isCommentAutoGenerated" : true
     },
     "OK" : {
       "comment" : "The label of a button that dismisses an alert.",
@@ -711,19 +719,19 @@
             "value" : "موافق"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "确定"
-          }
-        },
-        "fr" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
           }
         },
-        "de" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceptar"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
@@ -747,10 +755,10 @@
             "value" : "OK"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aceptar"
+            "value" : "确定"
           }
         }
       }
@@ -765,22 +773,22 @@
             "value" : "تاريخ الفتح"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "开户日期"
+            "value" : "Eröffnet"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abierto"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ouvert le"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eröffnet"
           }
         },
         "it" : {
@@ -801,10 +809,10 @@
             "value" : "Aberto em"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abierto"
+            "value" : "开户日期"
           }
         }
       }
@@ -817,22 +825,22 @@
             "value" : "المنتج"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "产品"
+            "value" : "Produkt"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Producto"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Produit"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Produkt"
           }
         },
         "it" : {
@@ -853,10 +861,10 @@
             "value" : "Produto"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Producto"
+            "value" : "产品"
           }
         }
       }
@@ -871,22 +879,22 @@
             "value" : "المعاملات الأخيرة"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "近期交易"
+            "value" : "Letzte Transaktionen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transacciones recientes"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Transactions récentes"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Letzte Transaktionen"
           }
         },
         "it" : {
@@ -907,10 +915,10 @@
             "value" : "Transações recentes"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Transacciones recientes"
+            "value" : "近期交易"
           }
         }
       }
@@ -925,22 +933,22 @@
             "value" : "إعادة المحاولة"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重试"
+            "value" : "Wiederholen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reintentar"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réessayer"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wiederholen"
           }
         },
         "it" : {
@@ -961,10 +969,10 @@
             "value" : "Tentar novamente"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reintentar"
+            "value" : "重试"
           }
         }
       }
@@ -979,22 +987,22 @@
             "value" : "توفير"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "储蓄"
+            "value" : "Spar"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahorros"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Épargne"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spar"
           }
         },
         "it" : {
@@ -1015,10 +1023,10 @@
             "value" : "Poupança"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ahorros"
+            "value" : "储蓄"
           }
         }
       }
@@ -1033,22 +1041,22 @@
             "value" : "اختر الحساب"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择账户"
+            "value" : "Konto auswählen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar cuenta"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sélectionner un compte"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Konto auswählen"
           }
         },
         "it" : {
@@ -1069,10 +1077,10 @@
             "value" : "Selecionar conta"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleccionar cuenta"
+            "value" : "选择账户"
           }
         }
       }
@@ -1087,22 +1095,22 @@
             "value" : "اختر نطاق التاريخ"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择日期范围"
+            "value" : "Datumsbereich auswählen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar rango de fechas"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sélectionner une plage de dates"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Datumsbereich auswählen"
           }
         },
         "it" : {
@@ -1123,10 +1131,10 @@
             "value" : "Selecionar intervalo de datas"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleccionar rango de fechas"
+            "value" : "选择日期范围"
           }
         }
       }
@@ -1141,22 +1149,22 @@
             "value" : "اختر نطاق التاريخ"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择日期范围"
+            "value" : "Datumsbereich auswählen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar rango de fechas"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sélectionner une plage de dates"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Datumsbereich auswählen"
           }
         },
         "it" : {
@@ -1177,10 +1185,10 @@
             "value" : "Selecionar intervalo de datas"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleccionar rango de fechas"
+            "value" : "选择日期范围"
           }
         }
       }
@@ -1195,22 +1203,22 @@
             "value" : "الخدمة غير متاحة"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "服务无法访问"
+            "value" : "Dienst nicht erreichbar"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servicio no disponible"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Service indisponible"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dienst nicht erreichbar"
           }
         },
         "it" : {
@@ -1231,10 +1239,10 @@
             "value" : "Serviço indisponível"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Servicio no disponible"
+            "value" : "服务无法访问"
           }
         }
       }
@@ -1249,22 +1257,22 @@
             "value" : "انقطع الاتصال قبل أن نتمكن من تحميل هذه الصفحة."
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "连接在加载此页面之前中断。"
+            "value" : "Die Verbindung wurde unterbrochen, bevor wir diese Seite laden konnten."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La conexión se interrumpió antes de que pudiéramos cargar esta página."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "La connexion a été interrompue avant que nous puissions charger cette page."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die Verbindung wurde unterbrochen, bevor wir diese Seite laden konnten."
           }
         },
         "it" : {
@@ -1285,10 +1293,10 @@
             "value" : "A conexão falhou antes que pudéssemos carregar esta página."
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La conexión se interrumpió antes de que pudiéramos cargar esta página."
+            "value" : "连接在加载此页面之前中断。"
           }
         }
       }
@@ -1302,22 +1310,22 @@
             "value" : "أجل"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "定期"
+            "value" : "Termin"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plazo"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terme"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Termin"
           }
         },
         "it" : {
@@ -1338,10 +1346,10 @@
             "value" : "Prazo"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Plazo"
+            "value" : "定期"
           }
         }
       }
@@ -1356,22 +1364,22 @@
             "value" : "إلى"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "至"
+            "value" : "Bis"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasta"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "À"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bis"
           }
         },
         "it" : {
@@ -1392,10 +1400,10 @@
             "value" : "Até"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hasta"
+            "value" : "至"
           }
         }
       }
@@ -1410,22 +1418,22 @@
             "value" : "حاول مرة أخرى"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重试"
+            "value" : "Erneut versuchen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intentar de nuevo"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réessayer"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erneut versuchen"
           }
         },
         "it" : {
@@ -1446,10 +1454,10 @@
             "value" : "Tente novamente"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Intentar de nuevo"
+            "value" : "重试"
           }
         }
       }
@@ -1464,22 +1472,22 @@
             "value" : "حاول تحديد نطاق زمني مختلف."
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尝试选择不同的时间范围。"
+            "value" : "Versuchen Sie, einen anderen Zeitraum auszuwählen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intente seleccionar un rango de tiempo diferente."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Essayez de sélectionner une plage de temps différente."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Versuchen Sie, einen anderen Zeitraum auszuwählen."
           }
         },
         "it" : {
@@ -1500,10 +1508,10 @@
             "value" : "Tente selecionar um intervalo de tempo diferente."
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Intente seleccionar un rango de tiempo diferente."
+            "value" : "尝试选择不同的时间范围。"
           }
         }
       }
@@ -1572,22 +1580,22 @@
             "value" : "تعذر تحميل المعاملات"
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "无法加载交易记录"
+            "value" : "Transaktionen konnten nicht geladen werden"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudieron cargar las transacciones"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impossible de charger les transactions"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transaktionen konnten nicht geladen werden"
           }
         },
         "it" : {
@@ -1608,10 +1616,10 @@
             "value" : "Não foi possível carregar as transações"
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No se pudieron cargar las transacciones"
+            "value" : "无法加载交易记录"
           }
         }
       }
@@ -1626,22 +1634,22 @@
             "value" : "نواجه تأخيرًا في استرجاع كشف حسابك. يرجى المحاولة مرة أخرى بعد بضع دقائق."
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我们检索您的账单时遇到延迟，请几分钟后重试。"
+            "value" : "Es gibt Verzögerungen beim Abrufen Ihres Kontoauszugs. Bitte versuchen Sie es in ein paar Minuten erneut."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estamos experimentando demoras en la recuperación de su estado de cuenta. Intente de nuevo en unos minutos."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nous rencontrons des retards dans la récupération de votre relevé. Veuillez réessayer dans quelques minutes."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Es gibt Verzögerungen beim Abrufen Ihres Kontoauszugs. Bitte versuchen Sie es in ein paar Minuten erneut."
           }
         },
         "it" : {
@@ -1662,10 +1670,10 @@
             "value" : "Estamos enfrentando atrasos na recuperação do seu extrato. Tente novamente em alguns minutos."
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Estamos experimentando demoras en la recuperación de su estado de cuenta. Intente de nuevo en unos minutos."
+            "value" : "我们检索您的账单时遇到延迟，请几分钟后重试。"
           }
         }
       }
@@ -1678,22 +1686,22 @@
             "value" : "لم نتمكن من تحميل المزيد من التفاصيل للحساب المحدد."
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "无法加载所选账户的更多详细信息。"
+            "value" : "Wir konnten keine weiteren Details für das ausgewählte Konto laden."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No pudimos cargar más detalles para la cuenta seleccionada."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nous n'avons pas pu charger plus de détails pour le compte sélectionné."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wir konnten keine weiteren Details für das ausgewählte Konto laden."
           }
         },
         "it" : {
@@ -1714,10 +1722,10 @@
             "value" : "Não foi possível carregar mais detalhes para a conta selecionada."
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No pudimos cargar más detalles para la cuenta seleccionada."
+            "value" : "无法加载所选账户的更多详细信息。"
           }
         }
       }
@@ -1732,22 +1740,22 @@
             "value" : "نواجه مشكلات مستمرة في الاتصال. يرجى المحاولة مرة أخرى بعد بضع دقائق."
           }
         },
-        "zh-Hans" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我们遇到持续连接问题，请几分钟后重试。"
+            "value" : "Es bestehen anhaltende Verbindungsprobleme. Bitte versuchen Sie es in ein paar Minuten erneut."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estamos experimentando problemas persistentes de conexión. Intente de nuevo en unos minutos."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nous rencontrons des problèmes de connexion persistants. Veuillez réessayer dans quelques minutes."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Es bestehen anhaltende Verbindungsprobleme. Bitte versuchen Sie es in ein paar Minuten erneut."
           }
         },
         "it" : {
@@ -1768,10 +1776,10 @@
             "value" : "Estamos enfrentando problemas persistentes de conexão. Tente novamente em alguns minutos."
           }
         },
-        "es" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Estamos experimentando problemas persistentes de conexión. Intente de nuevo en unos minutos."
+            "value" : "我们遇到持续连接问题，请几分钟后重试。"
           }
         }
       }
